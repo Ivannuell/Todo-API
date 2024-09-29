@@ -1,7 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 
 import ErrorResponse from './interfaces/ErrorResponse';
-import { todo } from './types/todoType';
 
 export function notFound(req: Request, res: Response, next: NextFunction) {
   res.status(404);
@@ -17,12 +16,4 @@ export function errorHandler(err: Error, req: Request, res: Response<ErrorRespon
     message: err.message,
     stack: process.env.NODE_ENV === 'production' ? '🥞' : err.stack,
   });
-}
-
-export function checkTodoRequest(req: Request, res: Response<todo>, next: NextFunction ) {
-  if (!req.body.title || req.body.title.typeof !== 'string') {
-    res.status(400);
-    next(new Error('Title is required'));
-  }
-  next();
 }

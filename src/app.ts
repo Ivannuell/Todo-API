@@ -7,7 +7,8 @@ import * as middlewares from './middlewares';
 import api from './api';
 import MessageResponse from './interfaces/MessageResponse';
 
-require('dotenv').config();
+import doenv from 'dotenv';
+doenv.config();
 
 const app = express();
 
